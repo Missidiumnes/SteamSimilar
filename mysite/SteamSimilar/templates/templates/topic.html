@@ -1,0 +1,20 @@
+{% extends 'templates/forum.html' %}
+
+{% block content %}
+  <h1>{{ topic.title }}</h1>
+  <ul>
+    {% for post in posts %}
+      <li>
+        <h3>{{ post.text }}</h3>
+        <p>Author: {{ post.author.username }}</p>
+        <p><a href="{% url 'new_comment' %}?post_id={{ post.id }}">Add comment</a></p>
+        <ul>
+          {% for comment in post.comment_set.all %}
+            <li>{{ comment.text }} - {{ comment.author.username }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'new_post' %}?topic_id={{ topic.id }}">Add post</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'templates/forum.html' %}
+
+{% block content %}
+  <h1>New Comment</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="post_id" value="{{ request.GET.post_id }}">
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'templates/forum.html' %}
+
+{% block content %}
+  <h1>Topics</h1>
+  <ul>
+    {% for topic in topics %}
+      <li><a href="{% url 'topic' topic.id %}">{{ topic.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

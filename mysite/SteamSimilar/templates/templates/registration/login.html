@@ -1,0 +1,11 @@
+{% extends 'templates/forum.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post" action="{% url 'auth:login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  <a href="{% url 'auth:login' %}"><h3 class="agileinfo_sign">Sign In </h3></a>
+  </form>
+{% endblock %}
